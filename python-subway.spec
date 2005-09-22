@@ -2,7 +2,7 @@
 %define		snap	20050913
 
 Summary:	A pythonic, object-oriented web development stack
-#Summary(pl):	
+Summary(pl):	Pythonowy, zorientowany obiektowo stos do tworzenia WWW
 Name:		python-%{module}
 Version:	0
 Release:	0.%{snap}.1
@@ -17,23 +17,14 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-The Subway project aims to create  a Web development stack combining the
-ideas  and  spirit of  Ruby  on  Rails  with  a comprehensive  suite  of
+The Subway project aims to create a Web development stack combining the
+ideas and spirit of Ruby on Rails with a comprehensive suite of
 prewritten Python web libraries and tools.
 
-#description -l pl
-
-#%package examples
-#Summary:	Example files for CherryPy
-#Summary(pl):	Pliki przyk³adów dla CherryPy
-#Group:		Development/Languages/Python
-#Requires:	%{name} = %{version}-%{release}
-
-#%description examples
-#Example files for CherryPy.
-
-#%description examples -l pl
-#Pliki przyk³adów dla CherryPy.
+%description -l pl
+Celem projektu Subway jest stworzenie stosu do tworzenia WWW ³±cz±cego
+idee i duch Ruby on Rails z obszernym zestawem gotowych bibliotek i
+narzêdzi pythonowych do WWW.
 
 %prep
 %setup -q -n %{module}-%{snap}
@@ -44,23 +35,15 @@ prewritten Python web libraries and tools.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_bindir}}
 
 cp -r subway $RPM_BUILD_ROOT%{py_sitescriptdir}
 install subway_create.py $RPM_BUILD_ROOT%{_bindir}
-
-#cp -r cherrypy/tutorial $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#doc 
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/%{module}
-
-#%files examples
-#%defattr(644,root,root,755)
-#%{_examplesdir}/%{name}-%{version}
