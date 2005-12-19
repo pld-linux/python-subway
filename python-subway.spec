@@ -49,7 +49,9 @@ python ./setup.py install \
 
 %py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}
 %py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}
+mv $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/skeleton $RPM_BUILD_ROOT
 %py_postclean
+mv $RPM_BUILD_ROOT/skeleton $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/
 
 mv $RPM_BUILD_ROOT%{_bindir}/subway_create.py $RPM_BUILD_ROOT%{_bindir}/subway_create.py.org
 echo '#!/usr/bin/python' > $RPM_BUILD_ROOT%{_bindir}/subway_create.py
