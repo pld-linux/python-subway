@@ -18,6 +18,7 @@ Requires:	python-cheetah
 Requires:	python-cherrypy
 Requires:	python-FormEncode
 Requires:	python-SQLObject
+Requires:	python-statesaver
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,11 +51,15 @@ python ./setup.py install \
 %py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}
 %py_postclean
 
+mv $RPM_BUILD_ROOT%{_bindir}/subway_create.py $RPM_BUILD_ROOT%{_bindir}/subway_create.py.org
+echo '#!/usr/bin/python' > $RPM_BUILD_ROOT%{_bindir}/subway_create.py
+cat $RPM_BUILD_ROOT%{_bindir}/subway_create.py.org >> $RPM_BUILD_ROOT%{_bindir}/subway_create.py
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/*.py
 %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/*egg*
