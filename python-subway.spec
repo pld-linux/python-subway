@@ -1,18 +1,23 @@
 %define		module	subway
-%define		snap	20050913
+%define		snap	20051219
 
 Summary:	A pythonic, object-oriented web development stack
 Summary(pl):	Pythonowy, zorientowany obiektowo stos do tworzenia WWW
 Name:		python-%{module}
-Version:	0
-Release:	0.%{snap}.1
+Version:	0.2
+%define	_rc	rc1
+Release:	0.%{_rc}.1
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	%{module}-%{snap}.tar.bz2
-# Source0-md5:	82655b144bcf72047d3aeeb9357380f7
+# Source0-md5:	4d439e2825479dda68eff179f07da223
 URL:		http://subway.python-hosting.com/
 BuildRequires:	python
 %pyrequires_eq	python-modules
+Requires:	python-cheetah
+Requires:	python-cherrypy
+Requires:	python-FormEncode
+Requires:	python-SQLObject
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,15 +35,20 @@ narzêdzi pythonowych do WWW.
 %setup -q -n %{module}-%{snap}
 
 %build
-%py_comp subway/
-%py_ocomp subway/
+python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_bindir}}
 
-cp -r subway $RPM_BUILD_ROOT%{py_sitescriptdir}
-install subway_create.py $RPM_BUILD_ROOT%{_bindir}
+python ./setup.py install \
+	--single-version-externally-managed \
+        --optimize 2 \
+        --root=$RPM_BUILD_ROOT
+
+%py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -47,3 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/%{module}
+%{py_sitescriptdir}/*egg*
