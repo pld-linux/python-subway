@@ -6,7 +6,7 @@ Summary(pl):	Pythonowy, zorientowany obiektowo stos do tworzenia WWW
 Name:		python-%{module}
 Version:	0.2
 %define	_rc	rc1
-Release:	0.%{_rc}.1
+Release:	0.%{_rc}.2
 License:	BSD
 Group:		Development/Languages/Python
 Source0:	%{module}-%{snap}.tar.bz2
