@@ -2,7 +2,7 @@
 %define		snap	20051219
 
 Summary:	A pythonic, object-oriented web development stack
-Summary(pl):	Pythonowy, zorientowany obiektowo stos do tworzenia WWW
+Summary(pl.UTF-8):   Pythonowy, zorientowany obiektowo stos do tworzenia WWW
 Name:		python-%{module}
 Version:	0.2
 %define	_rc	rc1
@@ -28,10 +28,10 @@ The Subway project aims to create a Web development stack combining
 the ideas and spirit of Ruby on Rails with a comprehensive suite of
 prewritten Python web libraries and tools.
 
-%description -l pl
-Celem projektu Subway jest stworzenie stosu do tworzenia WWW ³±cz±cego
+%description -l pl.UTF-8
+Celem projektu Subway jest stworzenie stosu do tworzenia WWW Å‚Ä…czÄ…cego
 idee i duch Ruby on Rails z obszernym zestawem gotowych bibliotek i
-narzêdzi pythonowych do WWW.
+narzÄ™dzi pythonowych do WWW.
 
 %prep
 %setup -q -n %{module}-%{snap}
