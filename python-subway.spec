@@ -2,7 +2,7 @@
 %define		snap	20051219
 
 Summary:	A pythonic, object-oriented web development stack
-Summary(pl.UTF-8):   Pythonowy, zorientowany obiektowo stos do tworzenia WWW
+Summary(pl.UTF-8):	Pythonowy, zorientowany obiektowo stos do tworzenia WWW
 Name:		python-%{module}
 Version:	0.2
 %define	_rc	rc1
