@@ -37,13 +37,13 @@ narzędzi pythonowych do WWW.
 %setup -q -n %{module}-%{snap}
 
 %build
-python setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{py_sitescriptdir},%{_bindir}}
 
-python ./setup.py install \
+%py_install \
 	--single-version-externally-managed \
 	--optimize 2 \
 	--root=$RPM_BUILD_ROOT
