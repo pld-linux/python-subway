@@ -12,6 +12,7 @@ Group:		Development/Languages/Python
 Source0:	%{module}-%{snap}.tar.bz2
 # Source0-md5:	4d439e2825479dda68eff179f07da223
 URL:		http://subway.python-hosting.com/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python
 BuildRequires:	sed >= 4.0
 %pyrequires_eq	python-modules
